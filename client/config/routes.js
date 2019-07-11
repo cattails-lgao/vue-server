@@ -7,8 +7,8 @@ export default [
     redirect: '/app'
   },
   {
-    path: '/app/:id', // /app/xxx
-    // path: '/app',
+    // path: '/app/:id', // /app/xxx
+    path: '/app',
     props: true,
     // props: (route) => ({ id: route.query.a }),
     component: () => import('../view/todo/todo.vue'),
@@ -18,7 +18,7 @@ export default [
       description: 'system call'
     },
     beforeEnter (to, from, next) {
-      console.log('app route before Enter')
+      // console.log('app route before Enter')
       next()
     }
     // children: [

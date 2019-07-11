@@ -4,9 +4,9 @@
     <Header></Header>
     <p>{{ fullName }} {{ counter }}</p>
     <!-- <p>{{ textA }} {{ textPlus }} {{ textC }}</p> -->
-    <!-- <router-link to="/app">app</router-link> -->
-    <router-link to="/app/123">app123</router-link>
-    <router-link to="/app/456">app456</router-link>
+    <router-link to="/app">app</router-link>
+    <!-- <router-link to="/app/123">app123</router-link> -->
+    <!-- <router-link to="/app/456">app456</router-link> -->
     <router-link to="/login">login</router-link>
     <!-- <todo></todo>-->
     <transition name="fade">
@@ -29,13 +29,16 @@ import Footer from './layout/footer.jsx'
 // import Todo from './view/todo/todo.vue'
 
 export default {
+  metaInfo: {
+    title: '滑稽'
+  },
   components: {
     Header,
     Footer
     // Todo
   },
   mounted () {
-    console.log(this.$store)
+    // console.log(this.$store)
     // let i = 1
     this.updateCountAsync({
       num: 5,
