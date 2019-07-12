@@ -2,16 +2,18 @@
   <div id="app">
     <div id="cover"></div>
     <Header></Header>
-    <p>{{ fullName }} {{ counter }}</p>
+    <!-- <p>{{ fullName }} {{ counter }}</p> -->
     <!-- <p>{{ textA }} {{ textPlus }} {{ textC }}</p> -->
-    <router-link to="/app">app</router-link>
+    <!-- <router-link to="/app">app</router-link> -->
     <!-- <router-link to="/app/123">app123</router-link> -->
     <!-- <router-link to="/app/456">app456</router-link> -->
-    <router-link to="/login">login</router-link>
+    <!-- <router-link to="/login">login</router-link> -->
     <!-- <todo></todo>-->
     <transition name="fade">
       <router-view></router-view>
     </transition>
+    <button @click="notify">click me</button>
+    <!-- <notification content="test notify"></notification> -->
     <Footer></Footer>
     <!-- <router-view name="a"></router-view> -->
   </div>
@@ -40,10 +42,10 @@ export default {
   mounted () {
     // console.log(this.$store)
     // let i = 1
-    this.updateCountAsync({
-      num: 5,
-      time: 2000
-    })
+    // this.updateCountAsync({
+    //   num: 5,
+    //   time: 2000
+    // })
     // this['a/updateText']('123')
     // this['a/add']()
     // this['b/testAction']()
@@ -57,7 +59,13 @@ export default {
   },
   methods: {
     ...mapActions(['updateCountAsync']),
-    ...mapMutations(['updateCount'])
+    ...mapMutations(['updateCount']),
+    notify () {
+      this.$notify({
+        content: 'test notify',
+        btn: 'close'
+      })
+    }
   },
   computed: {
     // textA () {
