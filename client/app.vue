@@ -1,6 +1,9 @@
 <template>
   <div id="app">
     <div id="cover"></div>
+    <div id="loading" v-show="loading">
+      <loading></loading>
+    </div>
     <Header></Header>
     <!-- <p>{{ fullName }} {{ counter }}</p> -->
     <!-- <p>{{ textA }} {{ textPlus }} {{ textC }}</p> -->
@@ -9,10 +12,10 @@
     <!-- <router-link to="/app/456">app456</router-link> -->
     <!-- <router-link to="/login">login</router-link> -->
     <!-- <todo></todo>-->
-    <transition name="fade">
+    <transition name="fade" mode="out-in">
       <router-view></router-view>
     </transition>
-    <button @click="notify">click me</button>
+    <!-- <button @click="notify">click me</button> -->
     <!-- <notification content="test notify"></notification> -->
     <Footer></Footer>
     <!-- <router-view name="a"></router-view> -->
@@ -21,13 +24,14 @@
 
 <script>
 import {
-  mapState,
-  mapGetters,
-  mapActions,
-  mapMutations
+  mapState
+  // mapGetters,
+  // mapActions,
+  // mapMutations
 } from 'vuex'
 import Header from './layout/header.vue'
 import Footer from './layout/footer.jsx'
+import Loading from './components/loading/loading.vue'
 // import Todo from './view/todo/todo.vue'
 
 export default {
@@ -36,7 +40,8 @@ export default {
   },
   components: {
     Header,
-    Footer
+    Footer,
+    Loading
     // Todo
   },
   mounted () {
@@ -58,25 +63,26 @@ export default {
     // }, 1000)
   },
   methods: {
-    ...mapActions(['updateCountAsync']),
-    ...mapMutations(['updateCount']),
-    notify () {
-      this.$notify({
-        content: 'test notify',
-        btn: 'close'
-      })
-    }
+    // ...mapActions(['updateCountAsync']),
+    // ...mapMutations(['updateCount']),
+    // notify () {
+    //   this.$notify({
+    //     content: 'test notify',
+    //     btn: 'close'
+    //   })
+    // }
   },
   computed: {
+    ...mapState(['loading'])
     // textA () {
     //   return this.$store.state.b.text
     // },
-    ...mapState({
-      counter: (state) => state.count
-    }),
-    ...mapGetters({
-      'fullName': 'fullName'
-    })
+    // ...mapState({
+    //   counter: (state) => state.count
+    // }),
+    // ...mapGetters({
+    //   'fullName': 'fullName'
+    // })
     // fullName () {
     //   return this.$store.getters.fullName
     // }
@@ -101,6 +107,18 @@ export default {
   background-color #999
   opacity .9
   z-index -1
+}
+#loading{
+  position fixed
+  top 0
+  right 0
+  bottom 0
+  left 0
+  background-color rgba(255,255,255,.3)
+  z-index 99
+  display flex
+  align-items center
+  justify-content center
 }
 </style>
 
